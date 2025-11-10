@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Natnicha Tarat - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        body {
+            font-family: "Prompt", sans-serif;
+        }
+
+        .profile-img {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-img::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            background: linear-gradient(45deg, #efdb66, #55c9db, #b09ec1);
+            border-radius: 50%;
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .profile-img img {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            background: linear-gradient(180deg, #3730a3 0%, #1e1b4b 100%);
+        }
+
+        .section-bar::after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            margin: 8px auto 0;
+            background-color: #253b9f;
+        }
+
+        .nav-link {
+            position: relative;
+            color: #ffffff !important;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            width: 0%;
+            height: 2px;
+            background: #efdb66;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link:focus::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        #project .card {
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            will-change: transform;
+        }
+
+        #project .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Large Desktop */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 2rem;
+            }
+        }
+
+        /* Tablet และหน้าจอขนาดกลาง */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .profile-img {
+                width: 220px;
+                height: 220px;
+            }
+
+            .profile-img img {
+                width: 220px;
+                height: 220px;
+            }
+
+            header .gap-4 {
+                gap: 1.5rem !important;
+            }
+        }
+
+        /* Tablet เล็ก */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+                margin-top: 2rem;
+            }
+
+            .profile-img img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .nav-link {
+                font-size: 0.9rem;
+            }
+
+            header .gap-4 {
+                gap: 1rem !important;
+            }
+
+            .card-body {
+                padding: 1.5rem !important;
+            }
+
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+        }
+        
+.badge {
+  font-weight: normal !important;
+}
+
+
+
+        /* Mobile */
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.2rem;
+            }
+
+            h3 {
+                font-size: 1.1rem;
+            }
+
+            .profile-img {
+                width: 180px;
+                height: 180px;
+            }
+
+            .profile-img img {
+                width: 180px;
+                height: 180px;
+            }
+
+            header .navbar-nav {
+                gap: 0.5rem !important;
+                font-size: 0.85rem;
+            }
+
+            .nav-link {
+                padding: 0.3rem 0.5rem;
+            }
+
+            section {
+                scroll-margin-top: 80px;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .card-body {
+                padding: 1rem !important;
+            }
+
+            .p-4,
+            .p-md-5 {
+                padding: 1rem !important;
+            }
+
+            .py-5 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+
+            /* ปรับขนาด badge ใน project */
+            .badge {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+
+            /* ปรับขนาดไอคอนใน Skills */
+            #Skills .fa-2x {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* Mobile เล็ก */
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+            }
+
+            h3 {
+                font-size: 0.95rem;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .profile-img img {
+                width: 150px;
+                height: 150px;
+            }
+
+            header .navbar-nav {
+                flex-wrap: wrap;
+                gap: 0.3rem !important;
+                justify-content: center !important;
+            }
+
+            .nav-link {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.4rem;
+            }
+
+            .btn {
+                font-size: 0.85rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .section-bar::after {
+                width: 50px;
+                height: 2px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="py-3 hero sticky-top">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="container text-light">
+            <ul class="navbar-nav d-flex flex-row justify-content-end gap-4 mb-0">
+                <li class="nav-item"><a class="nav-link" href="#Home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#About">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#project">Project</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#Contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="Home" class="hero pb-5">
+        <div class="container pt-5">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-light text-center text-md-start">
+                    <h1>Hello, I'm <span class="text-warning">Natnicha Tarat</span></h1>
+                    <h2>Mobile App Developer</h2>
+                    <div class="d-flex g-3 py-3 justify-content-center justify-content-md-start">
+                        <a href="https://github.com/natnichatarat" class="btn btn-outline-light rounded-pill px-3">
+                            <i class="fab fa-github me-2"></i>Github
+                            <i class="fas fa-external-link-alt ms-2 small opacity-75"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="profile-img">
+                        <img src="assets/img_profile.jpg" alt="Profile photo" class="rounded-circle"
+                            style="width: 250px; height: 250px; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="About" class="py-5 pt-4">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 text-dark section-bar">About Me</h2>
+            <div class="card border-0 shadow rounded-3 mb-4">
+                <div class="card-body p-4 md-3 text-secondary">
+                    <p>I am a recent graduate from Rajamangala University of Technology Lanna, Chiang Mai. I have
+                        knowledge, understanding, and
+                        experience in developing mobile applications. I have an enthusiastic personality. I have an
+                        enthusiastic personality,
+                        strong interpersonal skills, and strong teamwork and problem-solving skills. I'm committed to
+                        self-improvement and
+                        creating quality work for the organization.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h3 class="h5 text-primary fw-semibold text-center mb-3">Education</h3>
+                    <div class="list-group list-group-flush">
+                        <div
+                            class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-start">
+                            <div class="mb-2 mb-sm-0">
+                                <h4 class="h6 text-primary fw-bold mb-1">Computer Engineering</h4>
+                                <p class="text-muted mb-0">Rajamangala university of technology lanna, Chiang Mai</p>
+                            </div>
+                            <small class="text-muted">2022-2025</small>
+                        </div>
+                        <div
+                            class="list-group-item d-flex flex-column flex-sm-row justify-content-between align-items-start">
+                            <div class="mb-2 mb-sm-0">
+                                <h4 class="h6 text-primary fw-bold mb-1">Information Technology</h4>
+                                <p class="text-muted mb-0">Lampang Technical College</p>
+                            </div>
+                            <small class="text-muted">2020-2021</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Experience" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5 text-dark section-bar">Internship Experience</h2>
+            <div class="row gy-4">
+                <div class="col-12">
+                    <div class="p-3 p-md-4 rounded-3 shadow-sm border">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start mb-1">
+                            <div class="mb-3 mb-lg-0">
+                                <h4 class="h6 text-primary fw-semibold mb-1">Mobile Application Developer</h4>
+                                <h5 class="h6 text-dark mb-2">Paperless Co., Ltd.</h5>
+                                <p class="text-muted mb-0">
+                                    Over 4 months, I participated in developing features for the company's mobile
+                                    application project.
+                                    This included refactoring the code to achieve full null safety compliance and
+                                    ensuring
+                                    compatibility
+                                    with the latest version.
+                                </p>
+                            </div>
+                            <small class="text-muted text-nowrap">Jun. 2025 - Oct. 2025</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="p-3 p-md-4 rounded-3 shadow-sm border">
+                        <div class="d-flex flex-column flex-lg-row justify-content-between align-items-start mb-1">
+                            <div class="mb-3 mb-lg-0">
+                                <h4 class="h6 text-primary fw-semibold mb-1">IT Support</h4>
+                                <h5 class="h6 text-dark mb-2">Lampang Hospital</h5>
+                                <p class="text-muted mb-0">
+                                    Responsible for providing advice and solving basic problems regarding network
+                                    systems.
+                                </p>
+                            </div>
+                            <small class="text-muted text-nowrap">Jan 2021 - Mar 2021</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="project" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 text-dark section-bar">Project</h2>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="d-flex align-items-center justify-content-center bg-warning text-white"
+                            style="height:12rem">
+                            <i class="fa-regular fa-face-smile fa-3x"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-bold">Moody Application</h3>
+                            <p class="text-muted">A mobile application designed for daily emotion management.</p>
+                            <div class="d-flex gap-2 flex-wrap mb-3 ">
+                                <span class="badge text-bg-primary">Flutter</span>
+                                <span class="badge text-dark bg-warning">Firebase</span>
+                            </div>
+                            <a href="card1.html" class="text-decoration-none">View details <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="d-flex align-items-center justify-content-center bg-primary text-white"
+                            style="height:12rem">
+                            <i class="fa-solid fa-house fa-3x"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-bold">Mobile Application Chatbot</h3>
+                            <p class="text-muted">Developed a mobile application using Flutter for a dormitory</p>
+                            <div class="d-flex gap-2 flex-wrap mb-3">
+                                <span class="badge text-bg-primary">Flutter</span>
+                                <span class="badge text-dark bg-warning">Firebase</span>
+                                <span class="badge text-white bg-danger">Dialogflow</span>
+                            </div>
+                            <a href="card2.html" class="text-decoration-none">View details <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card h-100 shadow border-0">
+                        <div class="d-flex align-items-center justify-content-center bg-success text-white"
+                            style="height:12rem; background:#4338ca;">
+                            <i class="fa-solid fa-microchip fa-3x"></i>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h5 fw-bold">Arduino Color Sorter</h3>
+                            <p class="text-muted">Develop an automatic color sorting simulation system using IoT
+                                technology and Arduino.</p>
+                            <div class="d-flex gap-2 flex-wrap mb-3">
+                                <span class="badge text-bg-secondary">C++</span>
+                            </div>
+                            <a href="card3.html" class="text-decoration-none">View Details <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 text-dark section-bar">My Skills</h2>
+            <div class="card-body p-3 p-md-5">
+                <div class="row g-3">
+                    <div class="col-6 col-sm-4">
+                        <div class="text-center bg-light p-3 rounded h-100">
+                            <i class="fas fa-code fa-2x text-primary mb-2"></i>
+                            <div class="fw-medium">Flutter</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="text-center bg-light p-3 rounded h-100">
+                            <i class="fas fa-fire fa-2x text-warning mb-2"></i>
+                            <div class="fw-medium">Firebase</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="text-center bg-light p-3 rounded h-100">
+                            <i class="fab fa-html5 fa-2x text-danger mb-2"></i>
+                            <div class="fw-medium">HTML</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="text-center bg-light p-3 rounded h-100">
+                            <i class="fab fa-bootstrap fa-2x text-primary mb-2"></i>
+                            <div class="fw-medium">Bootstrap</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="text-center bg-light p-3 rounded h-100">
+                            <i class="fas fa-laptop-code fa-2x text-primary mb-2"></i>
+                            <div class="fw-medium">C++</div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-4">
+                        <div class="text-center bg-light p-3 rounded h-100">
+                            <i class="fab fa-python fa-2x text-primary mb-2"></i>
+                            <div class="fw-medium">Python</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-4 text-dark section-bar">Contact</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow overflow-hidden rounded-3">
+                        <div class="card-body p-0">
+                            <div class="p-4 p-md-5 text-white hero">
+                                <h3 class="h4 fw-semibold mb-4">Get In Touch</h3>
+                                <div class="vstack gap-4">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-white bg-opacity-25 p-3 rounded-circle">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="h6 mb-1 fw-semibold">Email</h4>
+                                            <p class="mb-0 text-light small">opalnatni@email.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-white bg-opacity-25 p-3 rounded-circle">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="h6 mb-1 fw-semibold">Phone</h4>
+                                            <p class="mb-0 text-light small">0821622589</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="bg-white bg-opacity-25 p-3 rounded-circle">
+                                            <i class="fab fa-linkedin"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="h6 mb-1 fw-semibold">Linkedin</h4>
+                                            <p class="mb-0 text-light small">Natnicha Tarat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
